@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "appingresoegreso": {
+      "hosting": {
+        "IngresoEgresoApp": [
+          "appingresoegreso"
+        ]
+      }
+    }
+  }
+}
