@@ -3,11 +3,11 @@
 import { Usuario } from '../models/usuario.models';
 
   export interface State {
-      user: Usuario;
+      user: Usuario | any;
   }
 
   export const initialState: State = {
-    user: new Usuario('', '', ''),
+    user!: null,
   }
 
   const _authReducer = createReducer(initialState,

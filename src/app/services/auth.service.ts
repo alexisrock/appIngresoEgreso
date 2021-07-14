@@ -7,14 +7,20 @@ import { Usuario } from '../models/usuario.models';
 import { AppState } from 'src/app/app.reducer';
 import { setUser, unSetUser } from '../auth/auth.actions';
 import { Subscription } from 'rxjs';
+import { unSetItems } from '../ingreso-egreso/ingreso-egreso.actions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  userSubscription!: Subscription
+  userSubscription!: Subscription;
+  private _user!: Usuario;
   constructor(public auth: AngularFireAuth, public firestore: AngularFirestore, private store: Store<AppState>) { }
+
+ get user(){
+   return this._user;
+ }
 
   initAuthListener(){
     this.auth.authState.subscribe(fuser=>{
@@ -22,17 +28,23 @@ export class AuthService {
       if (fuser) {
        this.userSubscription =  this.firestore.doc(`${fuser.uid}/usuario`).valueChanges()
         .subscribe(firestoreUser=>{
-          const user = Usuario.fromFirebase(firestoreUser)
+          const user = Usuario.fromFirebase(firestoreUser);
+          this._user = user;
          this.store.dispatch(setUser({ user}));
+
         })
 
       } else {
+        this._user =  new Usuario('','','');
         this.store.dispatch(unSetUser());
         this.userSubscription.unsubscribe();
+        this.store.dispatch( unSetItems());
       }
 
     })
   }
+
+
   crearUsuario(nombre: string, correo: string, password: string){
     return this.auth.createUserWithEmailAndPassword(correo, password)
     .then(({user})=>{
