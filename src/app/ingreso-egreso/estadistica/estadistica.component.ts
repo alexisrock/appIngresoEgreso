@@ -5,6 +5,7 @@ import { IngresoEgreso } from '../../models/ingreso-egreso.models';
 import { ChartType } from 'chart.js';
 import { MultiDataSet, Label } from 'ng2-charts';
 import { Subscription } from 'rxjs';
+import { AppsStateWithIngreso } from '../ingreso-egreso.reducer';
 
 @Component({
   selector: 'app-estadistica',
@@ -21,7 +22,7 @@ export class EstadisticaComponent implements OnInit, OnDestroy {
   public doughnutChartData: MultiDataSet = [[ ]];
   public doughnutChartType: ChartType = 'doughnut';
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppsStateWithIngreso>) {}
 
   ngOnInit(): void {
     this.estadisticaSubs = this.store
@@ -43,8 +44,6 @@ export class EstadisticaComponent implements OnInit, OnDestroy {
         this.egresos++;
       }
     }
-
-
     this.doughnutChartData = [  [this.totalIngresos,this.totalEgresos]  ]
   }
 }

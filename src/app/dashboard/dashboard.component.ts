@@ -21,10 +21,13 @@ ingresosSubs!: Subscription;
   ngOnInit(): void {
    this.userSubs = this.store.select('user')
     .pipe(
-      filter(auth => auth.user!= null)
+      filter(auth => auth.user!== null )
+    ).pipe(
+      filter(auth => auth.user.uid!== "" )
     )
     .subscribe(({user})=>{
-     this.ingresosSubs = this.ingresoEgresoService.initIngresosEgresosListener( user.uid)
+      console.log(user.uid)
+     this.ingresosSubs = this.ingresoEgresoService.initIngresosEgresosListener( user!.uid)
       .subscribe(ingresosEgresosFB=>{
         this.store.dispatch(setItems({items: ingresosEgresosFB}))
       });
@@ -33,8 +36,8 @@ ingresosSubs!: Subscription;
   }
 
   ngOnDestroy(){
-    this.userSubs.unsubscribe();
-    this.ingresosSubs.unsubscribe();
+    this.userSubs?.unsubscribe();
+    this.ingresosSubs?.unsubscribe();
   }
 
 }

@@ -33,7 +33,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   logout(){
     this.authservice.logout().then(
       ()=>{
-        this.rouer.navigate(['/login'])
+        this.rouer.navigate(['login'])
       });
 
 

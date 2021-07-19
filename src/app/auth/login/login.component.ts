@@ -32,9 +32,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
     );
 
-    this.uiSubscriptio = this.store.select('ui').subscribe(ui=>{
-                        this.cargando = ui.isLoading;
-
+    this.uiSubscriptio = this.store.select('ui')
+    .subscribe(ui=>{  this.cargando = ui.isLoading;
                       })
 
   }
@@ -48,16 +47,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   loginUsuario(){
     if (this.loginForm.valid) {
       this.store.dispatch(isLoading())
-      // swal.fire({
-      //   title: "Espere por favor"
-      // })
-      // swal.showLoading()
-
 
       const { email, password} = this.loginForm.value;
       this.authservices.loginUsuario( email, password)
       .then(credenciales=>{
-        console.log(credenciales)
+
         this.router.navigate(['/']);
         this.store.dispatch(stopLoading())
        // swal.close();
