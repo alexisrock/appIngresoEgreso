@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'FrontEndAngularAlexis'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_74B85285341045EBB233784A2137B016 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_ABEA4730BA83497C9A450C4A8E0B7BCC }}
           package: .
