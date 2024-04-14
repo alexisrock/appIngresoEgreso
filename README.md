@@ -1,27 +1,19 @@
-# IngresoEgresoApp
+<h1 align="center"> App de Ingresos </h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.3.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+<h2 align="left"> Descripcion</h2>
+<p>
+La idea principal de este aplicativo es que el usuario que se logue pueda ver los ingresos y egresos que tiene, se debe mencionar
+que el usuario debe estar registrado.
+</p>
+<h2 align="left"> Arquitectura</h2>
+<p>
+Este aplicativo tiene una arquitecura muy parecida a mvc ya que presenta una vista, un modelo en donde estan las entidades o clases y dao o lose servicios dpnde se realizan los consumos, y un controlador donde se maneja la logicva y la funcinoalidad del aplicativo, tambien se puede mencionar que eeste aplicativo utiliza lazyload para mejprar el renderizado de las paginas.
+</p>
+<h2 align="left"> Tecnologias utilizadas</h2>
+<p>
+    <li>Angular 12.0.3</li>
+    <li>Bootstrap 5.0.1</li>
+    <li>Typescript 4.2.3</li>
+</p>
+<h2 align="left"> Version del aplicativo</h2>
+<p> V.0.0.1</p>
